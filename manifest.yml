@@ -1,0 +1,15 @@
+---
+applications:
+  - name: pcf-mysql-test
+    memory: 128M
+    instances: 1
+    buildpack: https://github.com/kr/heroku-buildpack-go.git
+    command: pcf-mysql-test
+env:
+  #HOSTNAME: 127.0.0.1
+  #SQLUSERNAME: user
+  #SQLPASSWORD: password
+  #DATABASE: dbname
+  #INTERVAL: 315
+services:
+  - danlsql

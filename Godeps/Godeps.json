@@ -1,0 +1,12 @@
+{
+	"ImportPath": "pcf-mysql-test",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.2-212-g8f6c67f",
+			"Rev": "8f6c67f0228a4a6a962008d6c3d1e694e4532e71"
+		}
+	]
+}
