@@ -5,7 +5,7 @@ applications:
     instances: 1
     buildpack: https://github.com/kr/heroku-buildpack-go.git
     command: pcf-mysql-test
-env:
+#env:
   #HOSTNAME: 127.0.0.1
   #SQLUSERNAME: user
   #SQLPASSWORD: password
