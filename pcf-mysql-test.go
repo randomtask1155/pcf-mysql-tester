@@ -84,6 +84,21 @@ func overrideWithEnv() {
   }
 }
 
+func createTables(sess *sql.DB) {
+	_, err := sess.Exec("CREATE TABLE IF NOT EXISTS t1 (a TEXT, b INT)")
+	if err != nil {
+		fmt.Printf("Failed to create table t1: %sn", err)
+	}
+}
+
+func writeData(sess *sql.DB) {
+	_, err := sess.Exec("INSERT INTO t1 VALUES ('test data', 1)")
+	if err != nil {
+		fmt.Printf("Failed to insert data into table t1: %s\n", err)
+	}
+}
+
+
 func ConnectToDatabase() {
   //DBURL := fmt.Sprintf("mysql://%s:%s@%s:%s/%s?reconnect=true", User, Password, Hostname, Port, Database)
   DBURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", User, Password, Hostname, Port, Database)
@@ -96,6 +111,8 @@ func ConnectToDatabase() {
   sess.SetMaxOpenConns(1) // make sure this is only ever one connection open to eliminate variables
   
   for {
+    createTables(sess)
+    writeData(sess)
     err = sess.Ping()
     if err != nil {
       fmt.Printf("Error pinging mysql server: %s\n", err)
